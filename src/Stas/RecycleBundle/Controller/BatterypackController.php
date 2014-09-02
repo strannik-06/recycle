@@ -18,6 +18,7 @@ class BatterypackController extends Controller
         $repository = $this->getDoctrine()
             ->getRepository('StasRecycleBundle:Batterypack');
 
+        //todo: Query should be written in Entity Repository. It is incorrect to store queries in presentation layer.
         $query = $repository->createQueryBuilder('b')
             ->select(array(
                 'b.type',
