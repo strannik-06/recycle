@@ -15,18 +15,8 @@ class BatterypackController extends Controller
      */
     public function indexAction()
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('StasRecycleBundle:Batterypack');
-
-        //todo: Query should be written in Entity Repository. It is incorrect to store queries in presentation layer.
-        $query = $repository->createQueryBuilder('b')
-            ->select(array(
-                'b.type',
-                'SUM(b.amount) as totalAmount',
-            ))
-            ->groupBy('b.type')
-            ->getQuery();
-        $batterypacks = $query->getArrayResult();
+        $repository = $this->getDoctrine()->getRepository('StasRecycleBundle:Batterypack');
+        $batterypacks = $repository->findAllGroupedByType();
 
         return $this->render('StasRecycleBundle:Batterypack:index.html.twig',
             array('batterypacks' => $batterypacks));

@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Batterypack
  *
  * @ORM\Table("batterypack")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Stas\RecycleBundle\Entity\BatterypackRepository")
  */
 class Batterypack
 {
