@@ -3,7 +3,9 @@ namespace Stas\RecycleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Stas\RecycleBundle\Entity\Batterypack;
+use Stas\RecycleBundle\Entity\BatterypackRepository;
 
 /**
  * Class BatterypackController
@@ -11,11 +13,12 @@ use Stas\RecycleBundle\Entity\Batterypack;
 class BatterypackController extends Controller
 {
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getRepository('StasRecycleBundle:Batterypack');
+        /* @var BatterypackRepository$repository */
         $batterypacks = $repository->findAllGroupedByType();
 
         return $this->render('StasRecycleBundle:Batterypack:index.html.twig',
@@ -25,7 +28,7 @@ class BatterypackController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function newAction(Request $request)
     {
