@@ -2,6 +2,7 @@
 namespace Stas\RecycleBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
  * Test for Stas\RecycleBundle\Controller\BatterypackController
@@ -11,16 +12,21 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class BatterypackControllerTest extends WebTestCase
 {
     /**
+     * @var Client
+     */
+    protected $client;
+
+    /**
      * Check statistics feature
      */
     public function testStatistics()
     {
+        $this->client = static::createClient();
         $this->submitForm('AA', 4);
         $this->submitForm('AAA', 3);
         $this->submitForm('AA', 1);
 
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $this->client->request('GET', '/');
         $this->assertEquals(1, $crawler->filterXPath(
             "//tr[td[normalize-space(text())='AA'] and td[normalize-space(text())='5']]")->count());
         $this->assertEquals(1, $crawler->filterXPath(
@@ -33,14 +39,13 @@ class BatterypackControllerTest extends WebTestCase
      */
     protected function submitForm($type, $amount)
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/batterypack/new');
+        $crawler = $this->client->request('GET', '/batterypack/new');
 
-        $form = $crawler->selectButton('form[save]')->form();
+        $form = $crawler->selectButton('recycle_batterypack[save]')->form();
         $form->setValues(array(
-            'form[type]' => $type,
-            'form[amount]' => $amount,
+            'recycle_batterypack[type]' => $type,
+            'recycle_batterypack[amount]' => $amount,
         ));
-        $client->submit($form);
+        $this->client->submit($form);
     }
 }

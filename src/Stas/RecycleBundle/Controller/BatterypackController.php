@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Stas\RecycleBundle\Entity\Batterypack;
 use Stas\RecycleBundle\Entity\BatterypackRepository;
+use Stas\RecycleBundle\Form\Type\BatterypackType;
 
 /**
  * Class BatterypackController
@@ -33,12 +34,7 @@ class BatterypackController extends Controller
     public function newAction(Request $request)
     {
         $batterypack = new Batterypack();
-        $form = $this->createFormBuilder($batterypack)
-            ->add('type', 'text')
-            ->add('amount', 'integer')
-            ->add('name', 'text', array('required' => false))
-            ->add('save', 'submit', array('label' => 'Save'))
-            ->getForm();
+        $form = $this->createForm(new BatterypackType(), $batterypack);
 
         $form->handleRequest($request);
         if ($form->isValid()) {
