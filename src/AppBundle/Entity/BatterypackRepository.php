@@ -1,5 +1,5 @@
 <?php
-namespace Stas\RecycleBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

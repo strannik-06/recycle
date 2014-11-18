@@ -1,0 +1,7 @@
+batterypack_index:
+    path:     /
+    defaults: { _controller: AppBundle:Batterypack:index }
+
+batterypack_new:
+    path:     /batterypack/new
+    defaults: { _controller: AppBundle:Batterypack:new }

@@ -1,4 +1,4 @@
-stas_recycle:
-    resource: "@StasRecycleBundle/Resources/config/routing.yml"
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 

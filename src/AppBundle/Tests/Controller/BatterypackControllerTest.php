@@ -1,11 +1,11 @@
 <?php
-namespace Stas\RecycleBundle\Tests\Controller;
+namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
- * Test for Stas\RecycleBundle\Controller\BatterypackController
+ * Test for AppBundle\Controller\BatterypackController
  *
  * @group functional
  */
@@ -41,10 +41,10 @@ class BatterypackControllerTest extends WebTestCase
     {
         $crawler = $this->client->request('GET', '/batterypack/new');
 
-        $form = $crawler->selectButton('recycle_batterypack[save]')->form();
+        $form = $crawler->selectButton('batterypack[save]')->form();
         $form->setValues(array(
-            'recycle_batterypack[type]' => $type,
-            'recycle_batterypack[amount]' => $amount,
+            'batterypack[type]' => $type,
+            'batterypack[amount]' => $amount,
         ));
         $this->client->submit($form);
     }

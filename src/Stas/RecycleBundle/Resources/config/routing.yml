@@ -1,7 +1,0 @@
-stas_recycle_batterypack_index:
-    path:     /
-    defaults: { _controller: StasRecycleBundle:Batterypack:index }
-
-stas_recycle_batterypack_new:
-    path:     /batterypack/new
-    defaults: { _controller: StasRecycleBundle:Batterypack:new }

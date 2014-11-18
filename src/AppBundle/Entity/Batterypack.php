@@ -1,5 +1,5 @@
 <?php
-namespace Stas\RecycleBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Batterypack
  *
  * @ORM\Table("batterypack")
- * @ORM\Entity(repositoryClass="Stas\RecycleBundle\Entity\BatterypackRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\BatterypackRepository")
  */
 class Batterypack
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Stas\RecycleBundle\Form\Type;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +27,6 @@ class BatterypackType extends AbstractType
      */
     public function getName()
     {
-        return "recycle_batterypack";
+        return "batterypack";
     }
 }

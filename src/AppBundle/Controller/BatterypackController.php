@@ -1,12 +1,12 @@
 <?php
-namespace Stas\RecycleBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Stas\RecycleBundle\Entity\Batterypack;
-use Stas\RecycleBundle\Entity\BatterypackRepository;
-use Stas\RecycleBundle\Form\Type\BatterypackType;
+use AppBundle\Entity\Batterypack;
+use AppBundle\Entity\BatterypackRepository;
+use AppBundle\Form\Type\BatterypackType;
 
 /**
  * Class BatterypackController
@@ -18,11 +18,11 @@ class BatterypackController extends Controller
      */
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getRepository('StasRecycleBundle:Batterypack');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Batterypack');
         /* @var BatterypackRepository$repository */
         $batterypacks = $repository->findAllGroupedByType();
 
-        return $this->render('StasRecycleBundle:Batterypack:index.html.twig',
+        return $this->render('AppBundle:Batterypack:index.html.twig',
             array('batterypacks' => $batterypacks));
     }
 
@@ -42,10 +42,10 @@ class BatterypackController extends Controller
             $em->persist($batterypack);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('stas_recycle_batterypack_index'));
+            return $this->redirect($this->generateUrl('batterypack_index'));
         }
 
-        return $this->render('StasRecycleBundle:Batterypack:new.html.twig',
+        return $this->render('AppBundle:Batterypack:new.html.twig',
             array('form' => $form->createView()));
     }
 }
